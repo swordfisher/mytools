@@ -89,7 +89,7 @@ class Device(object):
     
     def login(self,child):
         child.sendline(self.passwd)
-        if not child.expect([pexpect.TIMEOUT,'.*skyeye360#.*',pexpect.EOF]):
+        if not child.expect([pexpect.TIMEOUT,'.*xxxxx360#.*',pexpect.EOF]):
             exit("ssh login failed!\n")
         return child
     
@@ -98,7 +98,7 @@ class Device(object):
         if not child.expect([pexpect.TIMEOUT, 'Password:.*',pexpect.EOF]):
             exit("diagnose login failed!\n")
         child.sendline(self.root_passwd)
-        if not child.expect([pexpect.TIMEOUT,"\[root@skyeye.*",pexpect.EOF]):
+        if not child.expect([pexpect.TIMEOUT,"\[root@xxxxx.*",pexpect.EOF]):
             exit("root passwd error!\n")
         child.interact() 
 
