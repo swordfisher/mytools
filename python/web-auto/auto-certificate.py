@@ -9,7 +9,6 @@ chrome = Browser('chrome')
 def main():
     global chrome
 
-    # 登录规则引擎
     chrome.visit('xxx')
     time.sleep(1)
     chrome.fill('user', '')
