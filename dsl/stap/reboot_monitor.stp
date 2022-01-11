@@ -1,0 +1,21 @@
+
+function is_open_creating:long (flag:long) 
+{ 
+    CREAT_FLAG = 4 // 0x4 = 00000100b 
+        if (flag & CREAT_FLAG) 
+        { 
+            return 1 
+        } 
+    return 0 
+} 
+probe begin 
+{ 
+    printf("monitor file beginn") 
+} 
+
+
+probe kernel.function("sys_reboot").call 
+{ 
+    filename=user_string_quoted(pointer_arg(1));
+    printf("filename: %s, execname: %s\n", filename, execname());
+}
